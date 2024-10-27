@@ -1,0 +1,40 @@
+from turtle import *
+from math import *
+
+# Set up the turtle
+speed(0)
+bgcolor("black")
+goto(0, -40)
+
+# Draw the petals
+for i in range(16):
+    color('#FFA216')  # Petal color
+    for j in range(18):
+        rt(90)
+        circle(150 - j * 6, 90)  # Draw the petal
+        lt(90)
+        circle(150 - j * 6, 90)  # Draw the petal
+        rt(180)
+    circle(40, 24)  # Draw the center circle
+
+# Draw the seeds in the sunflower center
+color('black')
+shape('circle')
+shapesize(0.5)
+fillcolor('#884513')  # Seed color
+golden_angle = 137.508  # Golden angle
+
+phi = golden_angle * (pi / 180)  # Convert to radians
+
+for i in range(110):
+    r = 4 * sqrt(i)  # Radius of the spiral
+    theta = i * phi  # Angle
+    x = r * cos(theta)  # X coordinate
+    y = r * sin(theta)  # Y coordinate
+    penup()
+    goto(x, y)  # Move to the calculated position
+    setheading(i * golden_angle)  # Set the heading
+    pendown()
+    stamp()  # Stamp the seed
+
+done()
